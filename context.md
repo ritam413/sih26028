@@ -8,6 +8,7 @@ It transforms decentralized, manual maintenance and train operations into a data
 ## 2. Grounding Status & Decoupled Architecture
 * **Grounded Core Paradigm:** Spatio-Temporal Dynamic ETA Forecasting + Multi-Horizon Rolling Planning (24h Tactical, 7D Operational, 30D Strategic) + Mathematical Constraint Programming (Google OR-Tools CP-SAT Disjunctive Graph) + Cryptographic Explainable Audit Trails (SHA-256).
 * **Decoupled Swappable Layers:** Ingestion Adapters (`IIngestionAdapter`) and Dynamic Safety Policy Engine (`DivisionalPolicyProfile`). Specific numerical values (e.g. 15-min train clearance, 10-min earthing buffers, 30 km/h TSR default, urgency weights `0.40/0.35/0.25`) are provisional reference baselines drawn from railway manuals (IRPWM, ACTM, IRSEM) and are externalized into configurable policy profiles rather than hardcoded in source code.
+* **Official SIH Portal Submissions & Fast-Recall Memory ($O(1)$):** Clean, special-character-free submission drafts (`Idea Description` and `Abstract Summary`) are stored in [`Submission Details.md`](file:///d:/Games/Hckthons/SIH26028/Submission%20Details.md) and [`docs/Submission Details.md`](file:///d:/Games/Hckthons/SIH26028/docs/Submission%20Details.md) for instant retrieval across all agent sessions.
 
 ## 3. Team Architecture & Ownership Matrix
 - **Developer 1 (Lead / Integrator):** `src/app/page.tsx`, `src/components/Navbar.tsx`, `src/components/LocoCameraFeed.tsx`, `src/components/AgentPipelineCanvas.tsx`, `src/components/PlatformGatewayFeed.tsx`, `src/app/globals.css`.

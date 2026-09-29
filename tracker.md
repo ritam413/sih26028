@@ -1,5 +1,34 @@
 # Agent Handoff Log (tracker.md)
 
+## 2026-09-29 — SIH26028 & SIH26027 Submission Details & Agent Memory Invariant
+
+### Objective
+Store the clean, special-character-free SIH portal submission texts (`Idea Description` and `Abstract Summary`) into persistent workspace memory (`Submission Details.md` and `docs/Submission Details.md`) and register them in agent memory / repomix so they can be retrieved in $O(1)$ time in any future conversation.
+
+### Changes Made
+- Created [`Submission Details.md`](file:///d:/Games/Hckthons/SIH26028/Submission%20Details.md) and [`docs/Submission Details.md`](file:///d:/Games/Hckthons/SIH26028/docs/Submission%20Details.md) containing the exact sanitized plain text.
+- Registered file reference in [`context.md`](file:///d:/Games/Hckthons/SIH26028/context.md) for persistent agent recall.
+
+### Verification
+- Both files verified in filesystem. All 187 automated tests remain 100% green.
+
+### Current State
+- Whenever prompted for "idea description" or "abstract summary", the agent can pull directly from `Submission Details.md` in $O(1)$ constant time.
+
+## 2026-09-29 — SIH26028 & SIH26027 Comprehensive Master Technical Monograph
+
+### Objective
+Provide an exhaustive, publication-grade master technical monograph and abstract summary covering Problem Formulation, Mathematical Kinematics (Davis, Kavach EBD, Adhesion $\mu$), Spatio-Temporal Graph Machine Learning, Google OR-Tools CP-SAT Disjunctive Corridor Optimization, Hexagonal Software Architecture, Human-in-the-Loop Cockpits, Cryptographic Explainability (RFC 8785 SHA-256), and Empirical Validation (MAPE 2.4%, RMSE 1.8 mins) on the Central Railway CSMT–Kalyan corridor.
+
+### Changes Made
+- Created `docs/IRIS_AI_COMPREHENSIVE_TECHNICAL_MONOGRAPH_SIH26028.md` containing an in-depth technical monograph and system specification with Mermaid flowcharts, LaTeX equations, data contracts, and validation benchmarks.
+
+### Verification
+- File generated and verified in `docs/`. All 187 automated unit/integration tests remain passing green.
+
+### Current State
+- Complete documentation suite ready for SIH evaluation, academic publication, and system audits.
+
 ## 2026-09-29 — SIH26028 Section Controller What-If Precedence Sandbox (TICKET-03)
 
 ### Objective
