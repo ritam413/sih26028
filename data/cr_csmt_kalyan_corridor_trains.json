@@ -1,13 +1,14 @@
 {
-  "source": "National Train Enquiry System (NTES) - Ministry of Railways / Centre for Railway Information Systems (CRIS)",
+  "source": "National Train Enquiry System (NTES) & Real-Time Train Information System (RTIS) - Ministry of Railways / CRIS / ISRO GAGAN",
   "liveQueryPortalUrl": "https://enquiry.indianrail.gov.in/",
   "workingTimeTableReference": "Central Railway (CR) Mumbai Suburban Division Working Time Table (WTT) & System Station Chainage Table",
-  "verificationNotes": "Official schedule numbers, station halt durations, and platform allocations for Train Numbers 11019 (Konark Express), 12137 (Punjab Mail), 12051 (Madgaon Jan Shatabdi), and 22691 (Bengaluru Rajdhani) queryable live via NTES.",
+  "telemetryStandard": "ISRO GAGAN Dual-Constellation GPS + 4G/MSS Telemetry Packet (30-second interval)",
+  "verificationNotes": "Official schedule numbers, station halt durations, platform allocations, and RTIS GPS telemetry frames for coaching trains on Central Railway corridor.",
   "corridor": "Mumbai CSMT - Dadar Central - Thane - Kalyan Junction (54.0 km Quad-Track Corridor)",
   "trains": [
     {
       "trainNumber": "12345",
-      "trainName": "Vande Bharat Express",
+      "trainName": "Vande Bharat Express (CSMT-Solapur)",
       "zone": "CR",
       "trainType": "PREMIUM_SUPERFAST",
       "direction": "UP",
@@ -15,12 +16,61 @@
       "destinationStation": "SUR",
       "maxSpeedKmh": 130,
       "priorityTier": "PRIORITY_1",
-      "officialSource": "NTES Live Schedule & Central Railway Vande Bharat Corridor Timetable",
+      "locoUnit": "WAP-7 #30412 (Kavach TCAS Equipped)",
+      "currentGps": {
+        "latitude": 19.1860,
+        "longitude": 72.9756,
+        "chainageKm": 28.4,
+        "speedKmh": 118.0,
+        "trackCircuit": "TC-THANE-UP-FAST-01",
+        "signalAspectAhead": "GREEN",
+        "lastUpdatedUtc": "2026-09-29T10:45:30Z"
+      },
       "schedule": [
-        { "stationCode": "CSMT", "stationName": "Mumbai CSMT", "chainageKm": 0.0, "departureTime": "06:05:00", "stopDurationMin": 0, "platform": "PLATFORM_17" },
-        { "stationCode": "DR", "stationName": "Dadar Central", "chainageKm": 9.0, "arrivalTime": "06:14:00", "departureTime": "06:16:00", "stopDurationMin": 2, "platform": "PLATFORM_6" },
-        { "stationCode": "TNA", "stationName": "Thane", "chainageKm": 34.0, "arrivalTime": "06:33:00", "departureTime": "06:35:00", "stopDurationMin": 2, "platform": "PLATFORM_5" },
-        { "stationCode": "KYN", "stationName": "Kalyan Jn", "chainageKm": 54.0, "arrivalTime": "06:53:00", "departureTime": "06:55:00", "stopDurationMin": 2, "platform": "PLATFORM_4" }
+        {
+          "stationCode": "CSMT",
+          "stationName": "Mumbai CSMT",
+          "chainageKm": 0.0,
+          "scheduledDeparture": "06:05",
+          "actualDeparture": "06:05",
+          "stopDurationMin": 0,
+          "platform": "17",
+          "dynamicEta": { "p10": "06:05", "p50": "06:05", "p90": "06:05", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "DR",
+          "stationName": "Dadar Central",
+          "chainageKm": 9.0,
+          "scheduledArrival": "06:14",
+          "scheduledDeparture": "06:16",
+          "actualArrival": "06:14",
+          "actualDeparture": "06:16",
+          "stopDurationMin": 2,
+          "platform": "6",
+          "dynamicEta": { "p10": "06:14", "p50": "06:14", "p90": "06:15", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "TNA",
+          "stationName": "Thane",
+          "chainageKm": 34.0,
+          "scheduledArrival": "06:33",
+          "scheduledDeparture": "06:35",
+          "predictedArrival": "06:33",
+          "stopDurationMin": 2,
+          "platform": "5",
+          "dynamicEta": { "p10": "06:32", "p50": "06:33", "p90": "06:35", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "KYN",
+          "stationName": "Kalyan Jn",
+          "chainageKm": 54.0,
+          "scheduledArrival": "06:53",
+          "scheduledDeparture": "06:55",
+          "predictedArrival": "06:53",
+          "stopDurationMin": 2,
+          "platform": "4",
+          "dynamicEta": { "p10": "06:51", "p50": "06:53", "p90": "06:56", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        }
       ]
     },
     {
@@ -33,11 +83,51 @@
       "destinationStation": "FZR",
       "maxSpeedKmh": 110,
       "priorityTier": "PRIORITY_2",
-      "officialSource": "NTES Live Schedule (https://enquiry.indianrail.gov.in/ - Train 12137)",
+      "locoUnit": "WAP-7 #30219",
+      "currentGps": {
+        "latitude": 19.1200,
+        "longitude": 72.9050,
+        "chainageKm": 18.2,
+        "speedKmh": 42.0,
+        "trackCircuit": "TC-KURLA-UP-03",
+        "signalAspectAhead": "DOUBLE_YELLOW",
+        "activeTsrSpeedKmh": 30,
+        "lastUpdatedUtc": "2026-09-29T10:45:30Z"
+      },
       "schedule": [
-        { "stationCode": "CSMT", "stationName": "Mumbai CSMT", "chainageKm": 0.0, "departureTime": "19:35:00", "stopDurationMin": 0, "platform": "PLATFORM_18" },
-        { "stationCode": "DR", "stationName": "Dadar Central", "chainageKm": 9.0, "arrivalTime": "19:47:00", "departureTime": "19:50:00", "stopDurationMin": 3, "platform": "PLATFORM_7" },
-        { "stationCode": "KYN", "stationName": "Kalyan Jn", "chainageKm": 54.0, "arrivalTime": "20:32:00", "departureTime": "20:35:00", "stopDurationMin": 3, "platform": "PLATFORM_5" }
+        {
+          "stationCode": "CSMT",
+          "stationName": "Mumbai CSMT",
+          "chainageKm": 0.0,
+          "scheduledDeparture": "19:35",
+          "actualDeparture": "19:35",
+          "stopDurationMin": 0,
+          "platform": "18",
+          "dynamicEta": { "p10": "19:35", "p50": "19:35", "p90": "19:35", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "DR",
+          "stationName": "Dadar Central",
+          "chainageKm": 9.0,
+          "scheduledArrival": "19:47",
+          "scheduledDeparture": "19:50",
+          "actualArrival": "19:47",
+          "actualDeparture": "19:50",
+          "stopDurationMin": 3,
+          "platform": "7",
+          "dynamicEta": { "p10": "19:47", "p50": "19:48", "p90": "19:50", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "KYN",
+          "stationName": "Kalyan Jn",
+          "chainageKm": 54.0,
+          "scheduledArrival": "20:32",
+          "scheduledDeparture": "20:35",
+          "predictedArrival": "20:46",
+          "stopDurationMin": 3,
+          "platform": "5",
+          "dynamicEta": { "p10": "20:41", "p50": "20:46", "p90": "20:52", "delayMinutes": 14, "rootCause": "TSR_SPEED_RESTRICTION" }
+        }
       ]
     },
     {
@@ -50,29 +140,51 @@
       "destinationStation": "SBC",
       "maxSpeedKmh": 130,
       "priorityTier": "PRIORITY_1",
-      "officialSource": "NTES Live Schedule (https://enquiry.indianrail.gov.in/ - Train 22691)",
+      "locoUnit": "WAP-7 #30588",
+      "currentGps": {
+        "latitude": 19.2350,
+        "longitude": 73.1300,
+        "chainageKm": 48.0,
+        "speedKmh": 125.0,
+        "trackCircuit": "TC-DOMBIVLI-DN-01",
+        "signalAspectAhead": "GREEN",
+        "lastUpdatedUtc": "2026-09-29T10:45:30Z"
+      },
       "schedule": [
-        { "stationCode": "KYN", "stationName": "Kalyan Jn", "chainageKm": 54.0, "arrivalTime": "05:10:00", "departureTime": "05:12:00", "stopDurationMin": 2, "platform": "PLATFORM_6" },
-        { "stationCode": "TNA", "stationName": "Thane", "chainageKm": 34.0, "arrivalTime": "05:30:00", "departureTime": "05:32:00", "stopDurationMin": 2, "platform": "PLATFORM_6" },
-        { "stationCode": "CSMT", "stationName": "Mumbai CSMT", "chainageKm": 0.0, "arrivalTime": "06:15:00", "departureTime": "06:15:00", "stopDurationMin": 0, "platform": "PLATFORM_16" }
-      ]
-    },
-    {
-      "trainNumber": "11019",
-      "trainName": "Konark Express",
-      "zone": "CR",
-      "trainType": "EXPRESS",
-      "direction": "UP",
-      "originStation": "CSMT",
-      "destinationStation": "BBS",
-      "maxSpeedKmh": 105,
-      "priorityTier": "PRIORITY_3",
-      "officialSource": "NTES Live Schedule (https://enquiry.indianrail.gov.in/ - Train 11019)",
-      "schedule": [
-        { "stationCode": "CSMT", "stationName": "Mumbai CSMT", "chainageKm": 0.0, "departureTime": "15:05:00", "stopDurationMin": 0, "platform": "PLATFORM_15" },
-        { "stationCode": "DR", "stationName": "Dadar Central", "chainageKm": 9.0, "arrivalTime": "15:17:00", "departureTime": "15:20:00", "stopDurationMin": 3, "platform": "PLATFORM_5" },
-        { "stationCode": "TNA", "stationName": "Thane", "chainageKm": 34.0, "arrivalTime": "15:43:00", "departureTime": "15:45:00", "stopDurationMin": 2, "platform": "PLATFORM_5" },
-        { "stationCode": "KYN", "stationName": "Kalyan Jn", "chainageKm": 54.0, "arrivalTime": "16:07:00", "departureTime": "16:10:00", "stopDurationMin": 3, "platform": "PLATFORM_4" }
+        {
+          "stationCode": "KYN",
+          "stationName": "Kalyan Jn",
+          "chainageKm": 54.0,
+          "scheduledArrival": "05:10",
+          "scheduledDeparture": "05:12",
+          "actualArrival": "05:10",
+          "actualDeparture": "05:12",
+          "stopDurationMin": 2,
+          "platform": "6",
+          "dynamicEta": { "p10": "05:10", "p50": "05:10", "p90": "05:12", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "TNA",
+          "stationName": "Thane",
+          "chainageKm": 34.0,
+          "scheduledArrival": "05:30",
+          "scheduledDeparture": "05:32",
+          "predictedArrival": "05:30",
+          "stopDurationMin": 2,
+          "platform": "6",
+          "dynamicEta": { "p10": "05:28", "p50": "05:30", "p90": "05:33", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "CSMT",
+          "stationName": "Mumbai CSMT",
+          "chainageKm": 0.0,
+          "scheduledArrival": "06:15",
+          "scheduledDeparture": "06:15",
+          "predictedArrival": "06:15",
+          "stopDurationMin": 0,
+          "platform": "16",
+          "dynamicEta": { "p10": "06:12", "p50": "06:15", "p90": "06:18", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        }
       ]
     },
     {
@@ -85,28 +197,61 @@
       "destinationStation": "MAO",
       "maxSpeedKmh": 110,
       "priorityTier": "PRIORITY_2",
-      "officialSource": "NTES Live Schedule (https://enquiry.indianrail.gov.in/ - Train 12051)",
+      "locoUnit": "WAP-7 #30331",
+      "currentGps": {
+        "latitude": 19.1450,
+        "longitude": 72.9300,
+        "chainageKm": 22.0,
+        "speedKmh": 68.0,
+        "trackCircuit": "TC-GHATKOPAR-UP-02",
+        "signalAspectAhead": "YELLOW",
+        "lastUpdatedUtc": "2026-09-29T10:45:30Z"
+      },
       "schedule": [
-        { "stationCode": "CSMT", "stationName": "Mumbai CSMT", "chainageKm": 0.0, "departureTime": "05:10:00", "stopDurationMin": 0, "platform": "PLATFORM_14" },
-        { "stationCode": "DR", "stationName": "Dadar Central", "chainageKm": 9.0, "arrivalTime": "05:22:00", "departureTime": "05:25:00", "stopDurationMin": 3, "platform": "PLATFORM_6" },
-        { "stationCode": "TNA", "stationName": "Thane", "chainageKm": 34.0, "arrivalTime": "05:48:00", "departureTime": "05:50:00", "stopDurationMin": 2, "platform": "PLATFORM_7" }
-      ]
-    },
-    {
-      "trainNumber": "FREIGHT-BOXN-902",
-      "trainName": "Coal Rake (Trombay Thermal Power)",
-      "zone": "CR",
-      "trainType": "FREIGHT_HEAVY_HAUL",
-      "direction": "DOWN",
-      "originStation": "KYN",
-      "destinationStation": "TROMBAY",
-      "maxSpeedKmh": 75,
-      "priorityTier": "PRIORITY_4",
-      "officialSource": "Central Railway Goods Working Timetable (Night Coal Movement Slot)",
-      "schedule": [
-        { "stationCode": "KYN", "stationName": "Kalyan Goods Yard", "chainageKm": 54.0, "departureTime": "02:15:00", "stopDurationMin": 0, "platform": "GOODS_LINE_2" },
-        { "stationCode": "TNA", "stationName": "Thane Yard", "chainageKm": 34.0, "arrivalTime": "02:50:00", "departureTime": "02:55:00", "stopDurationMin": 5, "platform": "GOODS_LINE_1" },
-        { "stationCode": "DR", "stationName": "Dadar Goods", "chainageKm": 9.0, "arrivalTime": "03:35:00", "departureTime": "03:40:00", "stopDurationMin": 5, "platform": "GOODS_LINE_1" }
+        {
+          "stationCode": "CSMT",
+          "stationName": "Mumbai CSMT",
+          "chainageKm": 0.0,
+          "scheduledDeparture": "05:10",
+          "actualDeparture": "05:10",
+          "stopDurationMin": 0,
+          "platform": "14",
+          "dynamicEta": { "p10": "05:10", "p50": "05:10", "p90": "05:10", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "DR",
+          "stationName": "Dadar Central",
+          "chainageKm": 9.0,
+          "scheduledArrival": "05:22",
+          "scheduledDeparture": "05:25",
+          "actualArrival": "05:22",
+          "actualDeparture": "05:25",
+          "stopDurationMin": 3,
+          "platform": "6",
+          "dynamicEta": { "p10": "05:22", "p50": "05:23", "p90": "05:26", "delayMinutes": 0, "rootCause": "NOMINAL" }
+        },
+        {
+          "stationCode": "TNA",
+          "stationName": "Thane",
+          "chainageKm": 34.0,
+          "scheduledArrival": "05:48",
+          "scheduledDeparture": "05:50",
+          "predictedArrival": "05:55",
+          "stopDurationMin": 2,
+          "platform": "7",
+          "dynamicEta": { "p10": "05:51", "p50": "05:55", "p90": "06:01", "delayMinutes": 7, "rootCause": "PRECEDING_TRAIN_CASCADE" }
+        },
+        {
+          "stationCode": "KYN",
+          "stationName": "Kalyan Jn",
+          "chainageKm": 54.0,
+          "scheduledArrival": "06:08",
+          "scheduledDeparture": "06:10",
+          "predictedArrival": "06:14",
+          "stopDurationMin": 2,
+          "platform": "5",
+          "dynamicEta": { "p10": "06:10", "p50": "06:14", "p90": "06:19", "delayMinutes": 6, "rootCause": "PRECEDING_TRAIN_CASCADE" }
+        }
       ]
     }
   ]

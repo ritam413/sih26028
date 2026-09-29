@@ -113,7 +113,59 @@ export interface TrackCircuitState {
   oheEnergized: boolean;
 }
 
-// 7. Time-Distance Timetable Trajectories
+// 7. Time-Distance Timetable Trajectories & Dynamic ETA
+export type DelayRootCause =
+  | 'NOMINAL'
+  | 'TSR_SPEED_RESTRICTION'
+  | 'SIGNAL_HOLD'
+  | 'PRECEDING_TRAIN_CASCADE'
+  | 'PLATFORM_CONGESTION'
+  | 'WEATHER_FOG_IMPACT';
+
+export interface DynamicStationEta {
+  stationCode: string;
+  stationName: string;
+  chainageKm: number;
+  scheduledArrivalMinutes: number;   // e.g. 374 (06:14)
+  scheduledDepartureMinutes: number; // e.g. 376 (06:16)
+  predictedEtaP50Minutes: number;    // Most probable dynamic arrival
+  confidenceInterval: {
+    p10EarliestMinutes: number;      // Best-case green-wave arrival
+    p90LatestMinutes: number;        // Worst-case congested arrival
+  };
+  delayMinutes: number;              // Positive = late, negative = early
+  delayRootCause: DelayRootCause;
+  recoveryMarginMinutes: number;     // Section recovery buffer
+  platformAssigned: string;
+}
+
+export interface LiveTrainTelemetry {
+  trainNumber: string;
+  trainName: string;
+  trainType: TrainClassification;
+  originStation: string;
+  destinationStation: string;
+  currentKm: number;
+  currentSpeedKmh: number;
+  maxPermissibleSpeedKmh: number;
+  currentTrackCircuit: string;
+  signalAspectAhead: SignalAspect;
+  activeTsrLimitKmh?: number;
+  routeProgressPct: number;
+  lastGpsUpdateTimestamp: string;
+  stations: DynamicStationEta[];
+}
+
+export interface EtaAccuracyMetrics {
+  corridorName: string;
+  meanAbsolutePercentageErrorPct: number; // MAPE (e.g. 2.4%)
+  rootMeanSquaredErrorMinutes: number;     // RMSE (e.g. 1.8 mins)
+  onTimePunctualityIndexPct: number;       // e.g. 91.5%
+  evaluatedTrainCount: number;
+  modelConfidenceScore: number;            // 0.0 - 1.0 (e.g. 0.96)
+  lastCalibrationTimestamp: string;
+}
+
 export interface TrainScheduleSlot {
   trainNumber: string;
   trainName: string;
@@ -126,6 +178,7 @@ export interface TrainScheduleSlot {
     arrivalTimeMinutes: number;
     departureTimeMinutes: number;
   }>;
+  liveTelemetry?: LiveTrainTelemetry;
 }
 
 export interface DecisionTimelineStep {
