@@ -13,6 +13,8 @@ const CorridorTwin3D = dynamic(() => import('@/components/Three/CorridorTwin3D')
   )
 });
 
+import { simulateWhatIfScenario } from '@/lib/apiClient';
+
 export interface StringChartProps {
   activeBlocks: JointBlockSchedule[];
   trainPaths?: TrainScheduleSlot[];
@@ -72,6 +74,23 @@ export const CorridorStringChart: React.FC<StringChartProps> = ({
   horizon = 'TACTICAL_24H'
 }) => {
   const [viewMode, setViewMode] = useState<'2D_CHART' | '3D_TWIN'>('2D_CHART');
+  const [whatIfActive, setWhatIfActive] = useState(false);
+  const [whatIfResult, setWhatIfResult] = useState<any>(null);
+
+  const handleToggleWhatIf = async () => {
+    if (whatIfActive) {
+      setWhatIfActive(false);
+      setWhatIfResult(null);
+    } else {
+      const result = await simulateWhatIfScenario({
+        heldTrainNumber: '12137',
+        holdDurationMinutes: 6,
+        prioritizedTrainNumber: '12345'
+      });
+      setWhatIfResult(result);
+      setWhatIfActive(true);
+    }
+  };
   const width = 860;
   const height = 440;
   const padding = { top: 30, right: 30, bottom: 40, left: 110 };
@@ -175,11 +194,45 @@ export const CorridorStringChart: React.FC<StringChartProps> = ({
             </button>
           </div>
 
+          {/* What-If Precedence Simulation Trigger */}
+          <button
+            onClick={handleToggleWhatIf}
+            className={`px-2.5 py-1 rounded-[4px] text-xs font-mono font-bold border transition-all cursor-pointer ${
+              whatIfActive
+                ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-xs'
+                : 'bg-[#121317] hover:bg-[#1c1d22] text-amber-400 border-amber-500/40'
+            }`}
+            title="Simulate dynamic precedence swap: Hold Train 12137 at Thane Loop line to resolve 12345 Vande Bharat conflict"
+          >
+            {whatIfActive ? '✓ What-If Active (Hold #12137)' : '⚡ Simulate What-If (Swap Precedence)'}
+          </button>
+
           <span className="text-xs font-mono bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-[4px] border border-blue-200 dark:border-blue-500/30 font-semibold">
             ⚡ White-Corridor: 01:30 - 04:45 IST
           </span>
         </div>
       </div>
+
+      {/* What-If Conflict Resolution Banner */}
+      {whatIfActive && whatIfResult && (
+        <div
+          className="mb-3 p-3 bg-amber-500/10 border border-amber-500/30 text-xs font-mono text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
+          style={{ borderRadius: '8px' }}
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-base">🔀</span>
+            <div>
+              <span className="font-bold text-amber-300">Precedence Conflict Resolved:</span> Train 12137 (Punjab Mail) routed to Thane Loop Line (+6m hold) → Train 12345 (Vande Bharat) clear signal granted (0 min delay, Network Punctuality: {whatIfResult.systemPunctualityImprovementPct}%).
+            </div>
+          </div>
+          <button
+            onClick={handleToggleWhatIf}
+            className="px-2 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded text-[11px] font-bold self-end sm:self-center cursor-pointer"
+          >
+            Reset Sandbox
+          </button>
+        </div>
+      )}
 
       {viewMode === '3D_TWIN' ? (
         <div className="w-full mt-2">
@@ -202,32 +255,114 @@ export const CorridorStringChart: React.FC<StringChartProps> = ({
             >
           {backgroundGrid}
 
-          {/* 2. Train Stringline Trajectories */}
+          {/* 2. Train Stringline Trajectories with Dynamic ETA Projections */}
           <g className="train-paths-layer" data-testid="train-paths-layer">
             {trainPaths.map((train, idx) => {
               if (!train.trajectoryPoints || train.trajectoryPoints.length < 2) return null;
               
               const startPt = train.trajectoryPoints[0];
-              const pointsStr = train.trajectoryPoints
-                .map((pt) => `${scaleX(pt.departureTimeMinutes)},${scaleY(pt.km)}`)
-                .join(' ');
-
               const colorInfo = TRAIN_COLORS[train.trainType] || { stroke: '#64748B', label: 'Train' };
               const isTopOrigin = startPt.km <= 5;
               const labelY = isTopOrigin ? scaleY(startPt.km) - (idx % 2 === 0 ? 6 : 14) : scaleY(startPt.km) + 12;
               const labelX = scaleX(startPt.departureTimeMinutes);
 
+              // Check if train has dynamic live telemetry
+              const telemetry = train.liveTelemetry;
+              const currentKm = telemetry?.currentKm ?? 0;
+
+              // Split into completed points vs projected points
+              const completedPts = train.trajectoryPoints.filter((pt) => 
+                isTopOrigin ? pt.km <= currentKm : pt.km >= currentKm
+              );
+              const remainingPts = train.trajectoryPoints.filter((pt) => 
+                isTopOrigin ? pt.km >= currentKm : pt.km <= currentKm
+              );
+
+              const fullPointsStr = train.trajectoryPoints
+                .map((pt) => `${scaleX(pt.departureTimeMinutes)},${scaleY(pt.km)}`)
+                .join(' ');
+
+              // Dynamic projected string with predicted ETA P50 (and What-If sandbox adjustments)
+              let projectedPointsStr = fullPointsStr;
+              if (telemetry?.stations && telemetry.stations.length > 0) {
+                projectedPointsStr = telemetry.stations
+                  .map((stn) => {
+                    let eta = stn.predictedEtaP50Minutes;
+                    if (whatIfActive && train.trainNumber === '12137' && stn.chainageKm >= 33) {
+                      eta += 6; // 6 min loop line hold at Thane
+                    } else if (whatIfActive && train.trainNumber === '12345') {
+                      eta = stn.scheduledArrivalMinutes; // 0 min delay (green wave)
+                    }
+                    return `${scaleX(eta)},${scaleY(stn.chainageKm)}`;
+                  })
+                  .join(' ');
+              }
+
+              // Confidence polygon coordinates (P10 forward, P90 reverse)
+              let confidencePolygonStr = '';
+              if (telemetry?.stations && telemetry.stations.length >= 2) {
+                const forwardP10 = telemetry.stations.map(
+                  (stn) => `${scaleX(stn.confidenceInterval.p10EarliestMinutes)},${scaleY(stn.chainageKm)}`
+                );
+                const reverseP90 = [...telemetry.stations].reverse().map(
+                  (stn) => `${scaleX(stn.confidenceInterval.p90LatestMinutes)},${scaleY(stn.chainageKm)}`
+                );
+                confidencePolygonStr = [...forwardP10, ...reverseP90].join(' ');
+              }
+
               return (
-                <g key={train.trainNumber} className="train-trajectory group">
+                <g key={train.trainNumber} className="train-trajectory group cursor-pointer">
+                  {/* Dynamic Confidence Envelope Polygon (P10 - P90) */}
+                  {confidencePolygonStr && (
+                    <polygon
+                      points={confidencePolygonStr}
+                      fill={colorInfo.stroke}
+                      fillOpacity={0.14}
+                      stroke="none"
+                      className="transition-opacity duration-200 group-hover:fill-opacity-25"
+                      data-testid={`confidence-band-${train.trainNumber}`}
+                    />
+                  )}
+
+                  {/* Base / Historical Stringline */}
                   <polyline
-                    points={pointsStr}
+                    points={fullPointsStr}
                     fill="none"
                     stroke={colorInfo.stroke}
                     strokeWidth={2}
-                    strokeOpacity={0.9}
+                    strokeOpacity={telemetry ? 0.45 : 0.85}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
+
+                  {/* Live Dynamic Prediction Stringline (Dashed) */}
+                  {telemetry && (
+                    <polyline
+                      points={projectedPointsStr}
+                      fill="none"
+                      stroke={colorInfo.stroke}
+                      strokeWidth={2.5}
+                      strokeDasharray="4 3"
+                      strokeOpacity={1.0}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  )}
+
+                  {/* Current GPS Position Indicator Dot */}
+                  {telemetry && (
+                    <circle
+                      cx={scaleX(telemetry.stations[0]?.predictedEtaP50Minutes || startPt.departureTimeMinutes)}
+                      cy={scaleY(telemetry.currentKm)}
+                      r={4.5}
+                      fill={telemetry.signalAspectAhead === 'GREEN' ? '#10B981' : telemetry.signalAspectAhead === 'RED' ? '#EF4444' : '#F59E0B'}
+                      stroke="#FFFFFF"
+                      strokeWidth={1.5}
+                      className="animate-pulse"
+                    />
+                  )}
+
+                  {/* Train Label */}
                   {train.trajectoryPoints.length > 0 && (
                     <text
                       x={labelX}
@@ -235,13 +370,14 @@ export const CorridorStringChart: React.FC<StringChartProps> = ({
                       textAnchor="middle"
                       className="text-[9px] font-mono fill-slate-700 dark:fill-[#c7c9d1] font-bold"
                     >
-                      {train.trainNumber}
+                      {train.trainNumber} {telemetry?.stations.some(s => s.delayMinutes > 0) ? '⚠️' : ''}
                     </text>
                   )}
                 </g>
               );
             })}
           </g>
+
 
           {/* 3. Shaded Rectangular Joint Maintenance Block Windows */}
           <g className="blocks-layer" data-testid="blocks-layer">

@@ -655,6 +655,25 @@ export const DefectVisionTelemetry: React.FC = () => {
                 </div>
               ) : (
                 <>
+                  {/* SIH26028: Dynamic Train ETA Forecast Bar */}
+                  <div
+                    className="p-2.5 bg-blue-950/40 rounded-lg border border-blue-500/30 mb-2 flex items-center justify-between text-xs font-mono"
+                    style={{ borderRadius: '8px' }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-slate-300 font-bold">12345 VB Exp</span>
+                      <span className="text-slate-400">|</span>
+                      <span className="text-cyan-300">Next: Dadar @ 06:14</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-slate-400">Dest: Kalyan</span>
+                      <span className="px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded text-[10px] font-bold">
+                        ETA 06:53 (±1.5m)
+                      </span>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-3 my-2">
                     <div
                       className="p-3.5 bg-slate-950 rounded-lg border border-slate-800 text-center shadow-inner"

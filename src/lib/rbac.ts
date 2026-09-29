@@ -24,12 +24,12 @@ export const ROLE_DEFAULT_ROUTE: Record<AppRole, string> = {
 };
 
 export const ROLE_ALLOWED_ROUTES: Record<AppRole, string[]> = {
-  CORRIDOR_PLANNER: ['/planner', '/', '/landing', '/admin', '/login', '/unauthorized'],
-  SECTION_CONTROLLER: ['/interlocking', '/', '/landing', '/admin', '/login', '/unauthorized'],
-  LOCO_PILOT: ['/vision-telemetry', '/', '/landing', '/admin', '/login', '/unauthorized'],
-  SAFETY_AUDITOR: ['/auditor', '/', '/landing', '/admin', '/login', '/unauthorized'],
-  FIELD_WORKER: ['/field-checkin', '/', '/landing', '/admin', '/login', '/unauthorized'],
-  ADMIN: ['/admin', '/', '/landing', '/planner', '/interlocking', '/vision-telemetry', '/auditor', '/field-checkin', '/login', '/unauthorized']
+  CORRIDOR_PLANNER: ['/planner', '/', '/landing', '/pids', '/admin', '/login', '/unauthorized'],
+  SECTION_CONTROLLER: ['/interlocking', '/', '/landing', '/pids', '/admin', '/login', '/unauthorized'],
+  LOCO_PILOT: ['/vision-telemetry', '/', '/landing', '/pids', '/admin', '/login', '/unauthorized'],
+  SAFETY_AUDITOR: ['/auditor', '/', '/landing', '/pids', '/admin', '/login', '/unauthorized'],
+  FIELD_WORKER: ['/field-checkin', '/', '/landing', '/pids', '/admin', '/login', '/unauthorized'],
+  ADMIN: ['/admin', '/', '/landing', '/pids', '/planner', '/interlocking', '/vision-telemetry', '/auditor', '/field-checkin', '/login', '/unauthorized']
 };
 
 export const ROLE_ALLOWED_TABS: Record<AppRole, NavbarTab[]> = {

@@ -22,7 +22,7 @@ if backend_dir not in sys.path:
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import streams, triage, braking, dispatch, system, audit, optimizer
+from routers import streams, triage, braking, dispatch, system, audit, optimizer, eta
 
 app = FastAPI(
     title="RailSuraksha AI — Backend API",
@@ -52,6 +52,8 @@ app.include_router(dispatch.router,  prefix="/api/v1/dispatch",  tags=["Section 
 app.include_router(system.router,    prefix="/api/v1/system",    tags=["System Mode"])
 app.include_router(audit.router,     prefix="/api/v1/audit",     tags=["Audit & Compliance"])
 app.include_router(optimizer.router, prefix="/api/v1/optimizer", tags=["Corridor Optimizer (CP-SAT)"])
+app.include_router(eta.router,       prefix="/api/v1/eta",       tags=["Dynamic ETA Predictor (SIH26028)"])
+
 
 
 @app.api_route("/", methods=["GET", "HEAD"], tags=["System"])

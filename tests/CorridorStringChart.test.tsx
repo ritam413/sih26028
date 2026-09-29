@@ -74,4 +74,16 @@ describe('TICKET-DEV1-03: Dual-Layer SVG Corridor Time-Distance String Chart', (
 
     expect(html).toContain('White-Corridor: 01:30 - 04:45 IST');
   });
+
+  it('renders What-If Precedence Sandbox simulation button', () => {
+    const html = renderToStaticMarkup(
+      <CorridorStringChart
+        activeBlocks={MOCK_JOINT_BLOCKS}
+        trainPaths={MOCK_TRAIN_SCHEDULES}
+        onSelectBlock={() => {}}
+      />
+    );
+
+    expect(html).toContain('Simulate What-If (Swap Precedence)');
+  });
 });

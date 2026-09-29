@@ -18,8 +18,8 @@ export function LandingNavbar() {
             <span className="font-display font-bold text-base text-[#e2e3e9] tracking-tight group-hover:text-white transition-colors">
               RailSuraksha AI
             </span>
-            <span className="hidden sm:inline-block ml-2 px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-amber-500/15 text-amber-300 border border-amber-500/30">
-              SIH-26027
+            <span className="hidden sm:inline-block ml-2 px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+              SIH-26028
             </span>
           </div>
         </Link>
@@ -32,14 +32,14 @@ export function LandingNavbar() {
           <a href="#shadow-block" className="hover:text-[#e2e3e9] transition-colors">
             Shadow Block Logic
           </a>
-          <a href="#synergy-matrix" className="hover:text-[#e2e3e9] transition-colors">
-            Multi-Dept Synergy
-          </a>
           <Link href="/planner" className="hover:text-[#e2e3e9] transition-colors">
-            Corridor Planner
+            Corridor Stringlines
           </Link>
-          <Link href="/vision-telemetry" className="hover:text-[#e2e3e9] transition-colors">
-            Defect Vision
+          <Link href="/pids" className="hover:text-[#e2e3e9] text-cyan-400 font-semibold transition-colors">
+            PIDS Live Board
+          </Link>
+          <Link href="/auditor" className="hover:text-[#e2e3e9] transition-colors">
+            ETA Accuracy
           </Link>
         </nav>
 

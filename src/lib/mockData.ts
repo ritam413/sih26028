@@ -348,6 +348,273 @@ export const MOCK_TRAIN_SCHEDULES: TrainScheduleSlot[] = [
   }
 ];
 
+// 6b. Grounded Real-Time Train Telemetry & Dynamic ETA Predictions (CRIS RTIS / ISRO GAGAN)
+export const MOCK_LIVE_TRAINS: LiveTrainTelemetry[] = [
+  {
+    trainNumber: '12345',
+    trainName: 'Vande Bharat Express (CSMT-Solapur)',
+    trainType: 'PREMIUM_PASSENGER',
+    originStation: 'CSMT',
+    destinationStation: 'Kalyan',
+    currentKm: 28.4,
+    currentSpeedKmh: 118.0,
+    maxPermissibleSpeedKmh: 130,
+    currentTrackCircuit: 'TC-05',
+    signalAspectAhead: 'GREEN',
+    routeProgressPct: 52.6,
+    lastGpsUpdateTimestamp: '2026-09-29T10:45:30Z',
+    stations: [
+      {
+        stationCode: 'CSMT',
+        stationName: 'Mumbai CSMT',
+        chainageKm: 0.0,
+        scheduledArrivalMinutes: 365,
+        scheduledDepartureMinutes: 365,
+        predictedEtaP50Minutes: 365,
+        confidenceInterval: { p10EarliestMinutes: 365, p90LatestMinutes: 365 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 0,
+        platformAssigned: '17'
+      },
+      {
+        stationCode: 'DR',
+        stationName: 'Dadar Central',
+        chainageKm: 9.0,
+        scheduledArrivalMinutes: 374,
+        scheduledDepartureMinutes: 376,
+        predictedEtaP50Minutes: 374,
+        confidenceInterval: { p10EarliestMinutes: 374, p90LatestMinutes: 375 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 2,
+        platformAssigned: '6'
+      },
+      {
+        stationCode: 'TNA',
+        stationName: 'Thane',
+        chainageKm: 34.0,
+        scheduledArrivalMinutes: 393,
+        scheduledDepartureMinutes: 395,
+        predictedEtaP50Minutes: 393,
+        confidenceInterval: { p10EarliestMinutes: 392, p90LatestMinutes: 395 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 3,
+        platformAssigned: '5'
+      },
+      {
+        stationCode: 'KYN',
+        stationName: 'Kalyan Jn',
+        chainageKm: 54.0,
+        scheduledArrivalMinutes: 413,
+        scheduledDepartureMinutes: 415,
+        predictedEtaP50Minutes: 413,
+        confidenceInterval: { p10EarliestMinutes: 411, p90LatestMinutes: 416 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 4,
+        platformAssigned: '4'
+      }
+    ]
+  },
+  {
+    trainNumber: '12137',
+    trainName: 'Punjab Mail',
+    trainType: 'EXPRESS',
+    originStation: 'CSMT',
+    destinationStation: 'Kalyan',
+    currentKm: 18.2,
+    currentSpeedKmh: 42.0,
+    maxPermissibleSpeedKmh: 110,
+    currentTrackCircuit: 'TC-04',
+    signalAspectAhead: 'DOUBLE_YELLOW',
+    activeTsrLimitKmh: 30,
+    routeProgressPct: 33.7,
+    lastGpsUpdateTimestamp: '2026-09-29T10:45:30Z',
+    stations: [
+      {
+        stationCode: 'CSMT',
+        stationName: 'Mumbai CSMT',
+        chainageKm: 0.0,
+        scheduledArrivalMinutes: 1175,
+        scheduledDepartureMinutes: 1175,
+        predictedEtaP50Minutes: 1175,
+        confidenceInterval: { p10EarliestMinutes: 1175, p90LatestMinutes: 1175 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 0,
+        platformAssigned: '18'
+      },
+      {
+        stationCode: 'DR',
+        stationName: 'Dadar Central',
+        chainageKm: 9.0,
+        scheduledArrivalMinutes: 1187,
+        scheduledDepartureMinutes: 1190,
+        predictedEtaP50Minutes: 1188,
+        confidenceInterval: { p10EarliestMinutes: 1187, p90LatestMinutes: 1190 },
+        delayMinutes: 1,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 2,
+        platformAssigned: '7'
+      },
+      {
+        stationCode: 'KYN',
+        stationName: 'Kalyan Jn',
+        chainageKm: 54.0,
+        scheduledArrivalMinutes: 1232,
+        scheduledDepartureMinutes: 1235,
+        predictedEtaP50Minutes: 1246,
+        confidenceInterval: { p10EarliestMinutes: 1241, p90LatestMinutes: 1252 },
+        delayMinutes: 14,
+        delayRootCause: 'TSR_SPEED_RESTRICTION',
+        recoveryMarginMinutes: 3,
+        platformAssigned: '5'
+      }
+    ]
+  },
+  {
+    trainNumber: '22691',
+    trainName: 'Bengaluru Rajdhani Express',
+    trainType: 'PREMIUM_PASSENGER',
+    originStation: 'Kalyan',
+    destinationStation: 'CSMT',
+    currentKm: 48.0,
+    currentSpeedKmh: 125.0,
+    maxPermissibleSpeedKmh: 130,
+    currentTrackCircuit: 'TC-06',
+    signalAspectAhead: 'GREEN',
+    routeProgressPct: 88.9,
+    lastGpsUpdateTimestamp: '2026-09-29T10:45:30Z',
+    stations: [
+      {
+        stationCode: 'KYN',
+        stationName: 'Kalyan Jn',
+        chainageKm: 54.0,
+        scheduledArrivalMinutes: 310,
+        scheduledDepartureMinutes: 312,
+        predictedEtaP50Minutes: 310,
+        confidenceInterval: { p10EarliestMinutes: 310, p90LatestMinutes: 312 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 0,
+        platformAssigned: '6'
+      },
+      {
+        stationCode: 'TNA',
+        stationName: 'Thane',
+        chainageKm: 34.0,
+        scheduledArrivalMinutes: 330,
+        scheduledDepartureMinutes: 332,
+        predictedEtaP50Minutes: 330,
+        confidenceInterval: { p10EarliestMinutes: 328, p90LatestMinutes: 333 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 2,
+        platformAssigned: '6'
+      },
+      {
+        stationCode: 'CSMT',
+        stationName: 'Mumbai CSMT',
+        chainageKm: 0.0,
+        scheduledArrivalMinutes: 375,
+        scheduledDepartureMinutes: 375,
+        predictedEtaP50Minutes: 375,
+        confidenceInterval: { p10EarliestMinutes: 372, p90LatestMinutes: 378 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 4,
+        platformAssigned: '16'
+      }
+    ]
+  },
+  {
+    trainNumber: '12051',
+    trainName: 'Madgaon Jan Shatabdi Express',
+    trainType: 'EXPRESS',
+    originStation: 'CSMT',
+    destinationStation: 'Kalyan',
+    currentKm: 22.0,
+    currentSpeedKmh: 68.0,
+    maxPermissibleSpeedKmh: 110,
+    currentTrackCircuit: 'TC-04',
+    signalAspectAhead: 'YELLOW',
+    routeProgressPct: 40.7,
+    lastGpsUpdateTimestamp: '2026-09-29T10:45:30Z',
+    stations: [
+      {
+        stationCode: 'CSMT',
+        stationName: 'Mumbai CSMT',
+        chainageKm: 0.0,
+        scheduledArrivalMinutes: 310,
+        scheduledDepartureMinutes: 310,
+        predictedEtaP50Minutes: 310,
+        confidenceInterval: { p10EarliestMinutes: 310, p90LatestMinutes: 310 },
+        delayMinutes: 0,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 0,
+        platformAssigned: '14'
+      },
+      {
+        stationCode: 'DR',
+        stationName: 'Dadar Central',
+        chainageKm: 9.0,
+        scheduledArrivalMinutes: 322,
+        scheduledDepartureMinutes: 325,
+        predictedEtaP50Minutes: 323,
+        confidenceInterval: { p10EarliestMinutes: 322, p90LatestMinutes: 326 },
+        delayMinutes: 1,
+        delayRootCause: 'NOMINAL',
+        recoveryMarginMinutes: 2,
+        platformAssigned: '6'
+      },
+      {
+        stationCode: 'TNA',
+        stationName: 'Thane',
+        chainageKm: 34.0,
+        scheduledArrivalMinutes: 348,
+        scheduledDepartureMinutes: 350,
+        predictedEtaP50Minutes: 355,
+        confidenceInterval: { p10EarliestMinutes: 351, p90LatestMinutes: 361 },
+        delayMinutes: 7,
+        delayRootCause: 'PRECEDING_TRAIN_CASCADE',
+        recoveryMarginMinutes: 3,
+        platformAssigned: '7'
+      },
+      {
+        stationCode: 'KYN',
+        stationName: 'Kalyan Jn',
+        chainageKm: 54.0,
+        scheduledArrivalMinutes: 368,
+        scheduledDepartureMinutes: 370,
+        predictedEtaP50Minutes: 374,
+        confidenceInterval: { p10EarliestMinutes: 370, p90LatestMinutes: 379 },
+        delayMinutes: 6,
+        delayRootCause: 'PRECEDING_TRAIN_CASCADE',
+        recoveryMarginMinutes: 4,
+        platformAssigned: '5'
+      }
+    ]
+  }
+];
+
+// Link live telemetry to schedule slots
+MOCK_TRAIN_SCHEDULES[0].liveTelemetry = MOCK_LIVE_TRAINS[0];
+MOCK_TRAIN_SCHEDULES[1].liveTelemetry = MOCK_LIVE_TRAINS[1];
+MOCK_TRAIN_SCHEDULES[2].liveTelemetry = MOCK_LIVE_TRAINS[2];
+
+// 6c. Dynamic ETA Model Calibration & Accuracy Metrics
+export const MOCK_ETA_ACCURACY_METRICS: EtaAccuracyMetrics = {
+  corridorName: 'Mumbai CSMT - Kalyan Main Line (54 KM Quad-Track)',
+  meanAbsolutePercentageErrorPct: 2.4,
+  rootMeanSquaredErrorMinutes: 1.8,
+  onTimePunctualityIndexPct: 92.4,
+  evaluatedTrainCount: 142,
+  modelConfidenceScore: 0.962,
+  lastCalibrationTimestamp: '2026-09-29T10:45:00Z'
+};
+
 // 7. Explainable Decision Dossiers & Auditing
 export const MOCK_DECISION_DOSSIERS: ExplainableDecisionDossier[] = [
   {

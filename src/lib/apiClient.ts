@@ -12,7 +12,9 @@ import {
   EbdCalculationResult,
   PlatformHoldState,
   ExplainableDecisionLog,
-  DeploymentMode
+  DeploymentMode,
+  LiveTrainTelemetry,
+  EtaAccuracyMetrics
 } from '@/types/apiContracts';
 import {
   MOCK_JOINT_BLOCKS,
@@ -22,7 +24,9 @@ import {
   MOCK_DECISION_DOSSIER,
   MOCK_INTERLOCKING_STATE,
   MOCK_INCIDENTS,
-  MOCK_PLATFORM_HOLD_STATE
+  MOCK_PLATFORM_HOLD_STATE,
+  MOCK_LIVE_TRAINS,
+  MOCK_ETA_ACCURACY_METRICS
 } from '@/lib/mockData';
 import { calculateKavachEbd } from '@/lib/agents/kavachBrakingAgent';
 import { buildExplainableDecisionLog } from '@/lib/agents/explainableLogger';
@@ -471,3 +475,93 @@ export async function fetchAuditLog(
     2000
   );
 }
+
+/* =========================================================================
+   5. DYNAMIC TRAIN ETA & RTIS TELEMETRY ENDPOINTS (SIH26028)
+   ========================================================================= */
+
+/**
+ * Fetch live GPS telemetry and dynamic ETA for a specific train
+ */
+export async function fetchLiveTrainTelemetry(
+  trainNumber: string
+): Promise<LiveTrainTelemetry | null> {
+  const defaultTrain = MOCK_LIVE_TRAINS.find((t) => t.trainNumber === trainNumber) || MOCK_LIVE_TRAINS[0];
+  return fetchWithTimeout<LiveTrainTelemetry | null>(
+    `${API_BASE_URL}/eta/forecast/${trainNumber}`,
+    defaultTrain,
+    1500
+  );
+}
+
+/**
+ * Fetch all active trains with real-time RTIS telemetry and dynamic ETAs
+ */
+export async function fetchCorridorLiveTrains(): Promise<LiveTrainTelemetry[]> {
+  return fetchWithTimeout<LiveTrainTelemetry[]>(
+    `${API_BASE_URL}/eta/corridor/CR-BB-01`,
+    MOCK_LIVE_TRAINS,
+    1500
+  );
+}
+
+/**
+ * Fetch dynamic ETA model evaluation metrics (MAPE, RMSE, Punctuality)
+ */
+export async function fetchEtaAccuracyMetrics(): Promise<EtaAccuracyMetrics> {
+  return fetchWithTimeout<EtaAccuracyMetrics>(
+    `${API_BASE_URL}/eta/accuracy-metrics`,
+    MOCK_ETA_ACCURACY_METRICS,
+    1500
+  );
+}
+
+/**
+ * Simulate what-if scenario (e.g. hold train at station, inject TSR)
+ */
+export async function simulateWhatIfScenario(scenario: {
+  trainNumber: string;
+  holdStation: string;
+  holdDurationMinutes: number;
+}): Promise<{
+  impactedTrains: Array<{ trainNumber: string; addedDelayMinutes: number; cascadeReason: string }>;
+  recommendation: string;
+}> {
+  const fallbackResult = {
+    impactedTrains: [
+      {
+        trainNumber: scenario.trainNumber,
+        addedDelayMinutes: scenario.holdDurationMinutes,
+        cascadeReason: `Platform Hold at ${scenario.holdStation}`
+      },
+      {
+        trainNumber: '12051',
+        addedDelayMinutes: Math.round(scenario.holdDurationMinutes * 0.6),
+        cascadeReason: `Headway cascade behind ${scenario.trainNumber}`
+      }
+    ],
+    recommendation: `Recommended: Reroute follow-up suburban EMU to Down Slow loop to preserve 15-min headway.`
+  };
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/eta/what-if`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(scenario),
+      signal: controller.signal
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch {
+    // Offline fallback
+  } finally {
+    clearTimeout(timeoutId);
+  }
+
+  return fallbackResult;
+}
+

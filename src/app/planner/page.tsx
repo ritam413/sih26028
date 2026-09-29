@@ -5,6 +5,7 @@ import { ProtectedRoute } from '@/components/Auth/ProtectedRoute';
 import { Navbar } from '@/components/Navbar';
 import { KpiStrip } from '@/components/Overview/KpiStrip';
 import { CorridorStringChart } from '@/components/Planner/CorridorStringChart';
+import { PidsStationBoard } from '@/components/Passenger/PidsStationBoard';
 import { IncidentQueue } from '@/components/Overview/IncidentQueue';
 import { TriageDonut, DecelerationCurve } from '@/components/Charts';
 import { DecisionLogModal } from '@/components/Auditor/DecisionLogModal';
@@ -22,6 +23,7 @@ import {
   MOCK_DECISION_LOG,
   MOCK_JOINT_BLOCKS,
   MOCK_TRAIN_SCHEDULES,
+  MOCK_LIVE_TRAINS,
   MOCK_DEMANDS
 } from '@/lib/mockData';
 import { playActionConfirmedChime } from '@/lib/audioAlerts';
@@ -90,7 +92,7 @@ export default function CorridorPlannerPage() {
           {/* 6 Metric KPI Strip */}
           <KpiStrip />
 
-          {/* Screen 1: Corridor Planner & Demand Queue */}
+          {/* Screen 1: Corridor Planner, Dynamic PIDS Board & Demand Queue */}
           <div className="space-y-4">
             <CorridorStringChart
               activeBlocks={jointBlocks}
@@ -99,6 +101,8 @@ export default function CorridorPlannerPage() {
               onSelectBlock={setSelectedBlockId}
               onViewDossier={() => setIsDecisionLogOpen(true)}
             />
+
+            <PidsStationBoard liveTrains={MOCK_LIVE_TRAINS} defaultStationCode="KYN" />
 
             <IncidentQueue
               demands={demands}

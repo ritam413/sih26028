@@ -11,7 +11,7 @@ describe('Landing Page Components', () => {
   it('renders LandingNavbar with brand title, status, and launch CTA', () => {
     const html = renderToStaticMarkup(<LandingNavbar />);
     expect(html).toContain('RailSuraksha AI');
-    expect(html).toContain('SIH-26027');
+    expect(html).toContain('SIH-26028');
     expect(html).toContain('Kavach SIL-4 Active');
     expect(html).toContain('Launch Command Cockpit');
   });

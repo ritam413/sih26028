@@ -40,4 +40,11 @@ describe('AuditorWorkspace Component (Screen 4)', () => {
     expect(html).toContain('Auditor Penetration &amp; Tamper Test');
     expect(html).toContain('Simulate Unauthorized Payload Tamper');
   });
+
+  it('renders Tab 4 Dynamic ETA Model Accuracy tab trigger', () => {
+    const html = renderToStaticMarkup(<AuditorWorkspace />);
+    expect(html).toContain('data-testid="tab-eta-accuracy"');
+    expect(html).toContain('Dynamic ETA Accuracy (SIH26028)');
+  });
 });
+

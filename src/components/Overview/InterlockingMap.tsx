@@ -347,6 +347,26 @@ export const InterlockingMap: React.FC<InterlockingMapProps> = ({
                         KM {circuit.kmStart.toFixed(1)} - {circuit.kmEnd.toFixed(1)}
                       </span>
                     </div>
+
+                    {/* Live Dynamic ETA Telemetry Chip */}
+                    {circuit.circuitId === 'TC-04' && (
+                      <div className="mt-1.5 px-1.5 py-0.5 bg-amber-50 dark:bg-amber-950/60 border border-amber-300 rounded text-[9px] font-mono text-amber-900 dark:text-amber-200 flex items-center justify-between">
+                        <span>● 12137 Punjab Mail</span>
+                        <span className="font-bold">ETA 20:46 (+14m)</span>
+                      </div>
+                    )}
+                    {circuit.circuitId === 'TC-05' && (
+                      <div className="mt-1.5 px-1.5 py-0.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 rounded text-[9px] font-mono text-emerald-900 dark:text-emerald-200 flex items-center justify-between">
+                        <span>● 12345 Vande Bharat</span>
+                        <span className="font-bold">ETA 06:53 (ON TIME)</span>
+                      </div>
+                    )}
+                    {circuit.circuitId === 'TC-06' && (
+                      <div className="mt-1.5 px-1.5 py-0.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 rounded text-[9px] font-mono text-emerald-900 dark:text-emerald-200 flex items-center justify-between">
+                        <span>● 22691 Rajdhani</span>
+                        <span className="font-bold">ETA 06:15 (ON TIME)</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Central Signal Head Visualizer */}

@@ -89,19 +89,19 @@ export default function RootLandingPage() {
       <section className="relative pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-10">
           {/* Eyebrow */}
-          <div className="hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#121317] border border-[#1c1d22] text-[11px] font-mono text-amber-400 mb-5">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            <span>SIH-26027 • Autonomous Corridor Maintenance Intelligence</span>
+          <div className="hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#121317] border border-[#1c1d22] text-[11px] font-mono text-cyan-400 mb-5">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span>SIH-26028 • Dynamic Train ETA Forecasting &amp; Corridor Optimization</span>
           </div>
 
           {/* Headline (Max 2 lines, display font) */}
           <h1 className="hero-title text-4xl sm:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-[#e2e3e9] leading-[1.1]">
-            Autonomous Shadow Block Engine for Indian Railways
+            Dynamic Train ETA Forecasting &amp; Corridor Intelligence
           </h1>
 
           {/* Subtext (<= 20 words for anti-slop punchiness) */}
           <p className="hero-subtext text-base sm:text-lg text-[#9194a1] mt-4 max-w-xl mx-auto leading-relaxed">
-            Eliminate track maintenance congestion by bundling multi-department works into zero-delay corridor shadow windows.
+            Sub-minute dynamic arrival predictions with Bayesian confidence intervals, integrated with Kavach TCAS cab telemetry and shadow-block corridor optimization.
           </p>
 
           {/* CTAs */}
