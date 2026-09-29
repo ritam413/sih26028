@@ -520,24 +520,28 @@ export async function fetchEtaAccuracyMetrics(): Promise<EtaAccuracyMetrics> {
  * Simulate what-if scenario (e.g. hold train at station, inject TSR)
  */
 export async function simulateWhatIfScenario(scenario: {
-  trainNumber: string;
-  holdStation: string;
+  trainNumber?: string;
+  heldTrainNumber?: string;
+  holdStation?: string;
   holdDurationMinutes: number;
+  prioritizedTrainNumber?: string;
 }): Promise<{
   impactedTrains: Array<{ trainNumber: string; addedDelayMinutes: number; cascadeReason: string }>;
   recommendation: string;
 }> {
+  const targetTrain = scenario.trainNumber || scenario.heldTrainNumber || '12137';
+  const targetStation = scenario.holdStation || 'KYN';
   const fallbackResult = {
     impactedTrains: [
       {
-        trainNumber: scenario.trainNumber,
+        trainNumber: targetTrain,
         addedDelayMinutes: scenario.holdDurationMinutes,
-        cascadeReason: `Platform Hold at ${scenario.holdStation}`
+        cascadeReason: `Platform Hold at ${targetStation}`
       },
       {
         trainNumber: '12051',
         addedDelayMinutes: Math.round(scenario.holdDurationMinutes * 0.6),
-        cascadeReason: `Headway cascade behind ${scenario.trainNumber}`
+        cascadeReason: `Headway cascade behind ${targetTrain}`
       }
     ],
     recommendation: `Recommended: Reroute follow-up suburban EMU to Down Slow loop to preserve 15-min headway.`

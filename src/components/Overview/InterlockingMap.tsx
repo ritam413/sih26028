@@ -264,7 +264,7 @@ export const InterlockingMap: React.FC<InterlockingMapProps> = ({
               signalId={currentCircuit.signalId}
               signalAspect={mapTo3DAspect(currentCircuit.signalAspect)}
               switchRoute={activeSwitch === 'NORMAL' ? 'MAINLINE' : 'TURNOUT'}
-              onToggleRoute={(route) => setActiveSwitch(route === 'MAINLINE' ? 'NORMAL' : 'REVERSE')}
+              onToggleRoute={(route: 'MAINLINE' | 'TURNOUT') => setActiveSwitch(route === 'MAINLINE' ? 'NORMAL' : 'REVERSE')}
               isLockedOut={currentCircuit.isSignalClamped || currentCircuit.status === 'BLOCK_SANCTIONED'}
             />
           </div>

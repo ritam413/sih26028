@@ -83,7 +83,9 @@ export const CorridorStringChart: React.FC<StringChartProps> = ({
       setWhatIfResult(null);
     } else {
       const result = await simulateWhatIfScenario({
+        trainNumber: '12137',
         heldTrainNumber: '12137',
+        holdStation: 'KYN',
         holdDurationMinutes: 6,
         prioritizedTrainNumber: '12345'
       });
