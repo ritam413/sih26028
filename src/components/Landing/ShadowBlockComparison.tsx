@@ -38,7 +38,7 @@ export function ShadowBlockComparison() {
                 : 'text-[#9194a1] hover:text-[#e2e3e9]'
             }`}
           >
-            RailSuraksha AI Shadow Block
+            IRIS ai Shadow Block
           </button>
         </div>
       </div>
@@ -88,7 +88,7 @@ export function ShadowBlockComparison() {
                 </div>
               </div>
             ) : (
-              /* RailSuraksha Unified Shadow Block Timeline */
+              /* IRIS ai Unified Shadow Block Timeline */
               <div className="space-y-4">
                 <div className="p-5 rounded-[12px] bg-amber-950/20 border border-amber-500/40 shadow-[0_0_20px_rgba(245,158,11,0.15)]">
                   <div className="flex items-center justify-between text-xs font-mono text-amber-300 mb-2">

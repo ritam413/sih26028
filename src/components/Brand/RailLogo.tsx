@@ -17,7 +17,7 @@ const SIZE_MAP: Record<string, number> = {
 };
 
 /**
- * RailSuraksha AI Bespoke Vector Emblem
+ * IRIS ai Bespoke Vector Emblem
  * Integrates:
  * 1. Precision Converging High-Speed Rails (Vanishing Horizon & Block Corridors)
  * 2. Cross-Ties & Switch Crossover (Dynamic Interlocking & Joint Shadow Bundling)
@@ -38,7 +38,7 @@ export const RailMarkSvg: React.FC<{ size?: number; className?: string; glow?: b
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`shrink-0 select-none ${className}`}
-      aria-label="RailSuraksha AI Logo Mark"
+      aria-label="IRIS ai Logo Mark"
     >
       <defs>
         {/* Primary High-Tech Rail Gradient */}
@@ -185,13 +185,13 @@ export const RailLogo: React.FC<RailLogoProps> = ({
         <div className="flex flex-col leading-none text-left">
           <div className="flex items-center gap-1.5">
             <span className="text-sm font-bold tracking-tight text-[#0F172A] dark:text-[#E2E3E9] group-hover:text-[#2B7FFF] transition-colors">
-              RailSuraksha AI
+              IRIS ai
             </span>
             <span
               className="text-[9px] font-mono font-semibold bg-[#E6F0FA] dark:bg-blue-950/40 text-[#2B7FFF] dark:text-blue-300 px-1 py-0.2 border border-[#D0DFEE] dark:border-blue-800/40"
               style={{ borderRadius: '4px' }}
             >
-              SIH-26027
+              SIH-26028
             </span>
           </div>
           <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-0.5">

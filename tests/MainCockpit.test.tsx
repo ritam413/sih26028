@@ -26,7 +26,7 @@ describe('TICKET-DEV1-07: Master Cockpit Assembly & Horizon Switcher', () => {
       expect(html).toContain('24h');
       expect(html).toContain('7D');
       expect(html).toContain('30D');
-      expect(html).toContain('RailSuraksha AI');
+      expect(html).toContain('IRIS ai');
     });
 
     it('renders all 4 tactical view switcher tabs matching Screen 1 - 4 mockups', () => {
@@ -98,7 +98,7 @@ describe('TICKET-DEV1-07: Master Cockpit Assembly & Horizon Switcher', () => {
 
     it('includes Explainable Decision Dossier and RDSO compliance infrastructure', () => {
       const html = renderToStaticMarkup(<CommandCenterPage />);
-      expect(html).toContain('RailSuraksha AI');
+      expect(html).toContain('IRIS ai');
     });
   });
 });

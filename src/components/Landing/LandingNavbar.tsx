@@ -16,7 +16,7 @@ export function LandingNavbar() {
           <RailLogo size={34} variant="badge" glow={true} />
           <div>
             <span className="font-display font-bold text-base text-[#e2e3e9] tracking-tight group-hover:text-white transition-colors">
-              RailSuraksha AI
+              IRIS ai
             </span>
             <span className="hidden sm:inline-block ml-2 px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
               SIH-26028

@@ -25,7 +25,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 
 export const metadata = {
-  title: 'RailSuraksha AI — National Railway Safety & Incident Intelligence Platform',
+  title: 'IRIS ai — National Railway Safety & Incident Intelligence Platform',
   description: 'National-grade railway command center with AI multi-agent safety ecosystem and RDSO Kavach braking physics.',
   icons: {
     icon: [

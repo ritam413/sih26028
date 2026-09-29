@@ -67,7 +67,7 @@ describe('Decoupled App Router Page Endpoints', () => {
         <LoginClient />
       </AuthProvider>
     );
-    expect(html).toContain('RailSuraksha AI • Officer Authentication Portal');
+    expect(html).toContain('IRIS ai • Officer Authentication Portal');
     expect(html).toContain('Pre-Seeded Operational Personas');
   });
 

@@ -11,7 +11,7 @@ export function LandingFooter() {
         <div className="flex items-center gap-3">
           <RailLogo size={28} variant="badge" glow={false} />
           <span className="font-display font-medium text-sm text-[#e2e3e9]">
-            RailSuraksha AI
+            IRIS ai
           </span>
           <span className="text-xs text-[#5e616e] font-mono">
             • National Railway Incident Intelligence Platform

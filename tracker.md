@@ -1,5 +1,47 @@
 # Agent Handoff Log (tracker.md)
 
+## 2026-09-30 — Website Branding Rename to "IRIS ai"
+
+### Objective
+Rename the frontend website and UI branding from "RailSuraksha AI" to "IRIS ai" across all navigation bars, footers, logos, authentication portals, and metadata.
+
+### Changes Made
+- Updated [`src/components/Navbar.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/components/Navbar.tsx): Replaced "RailSuraksha AI" brand text with "IRIS ai" and updated problem statement badge to `SIH-26028`.
+- Updated [`src/components/Brand/RailLogo.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/components/Brand/RailLogo.tsx): Replaced "RailSuraksha AI" with "IRIS ai" in emblem accessibility label, brand typography, and comments.
+- Updated [`src/components/Landing/LandingNavbar.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/components/Landing/LandingNavbar.tsx): Brand title updated to "IRIS ai" with `SIH-26028` tag.
+- Updated [`src/components/Landing/LandingFooter.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/components/Landing/LandingFooter.tsx): Brand title updated to "IRIS ai".
+- Updated [`src/components/Landing/ShadowBlockComparison.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/components/Landing/ShadowBlockComparison.tsx): Switch tab changed to "IRIS ai Shadow Block".
+- Updated [`src/components/Landing/MultiDeptSynergyMatrix.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/components/Landing/MultiDeptSynergyMatrix.tsx): Copy updated to "IRIS ai dissolves departmental silos...".
+- Updated [`src/app/layout.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/app/layout.tsx): Updated page title metadata to `IRIS ai — National Railway Safety & Incident Intelligence Platform`.
+- Updated [`src/app/login/LoginClient.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/src/app/login/LoginClient.tsx): Updated header title to `IRIS ai • Officer Authentication Portal`.
+- Updated test suites ([`tests/MainCockpit.test.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/tests/MainCockpit.test.tsx), [`tests/LandingPage.test.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/tests/LandingPage.test.tsx), [`tests/DecoupledRoutes.test.tsx`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/tests/DecoupledRoutes.test.tsx)) to assert "IRIS ai".
+
+### Verification
+- `npm test` — all 30 test files and 187 tests passing green.
+
+### Current State
+- The website now consistently displays **IRIS ai** across all landing page sections, operational cockpits, navigation headers, footer, auth portal, and HTML metadata.
+
+### Next Agent Instructions
+- Maintain "IRIS ai" branding across any new screens or components created.
+
+## 2026-09-30 — Submission Details Portal Optimization (<5000 and <10000 Chars)
+
+### Objective
+Compact and format `Idea Description` (under 5,000 characters including spaces) and `Abstract Summary` (under 10,000 characters including spaces) in 100% plain text without LaTeX or math artifacts for direct SIH portal submission.
+
+### Changes Made
+- Updated [`Submission Details.md`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/Submission%20Details.md) and [`docs/Submission Details.md`](file:///c:/CCodes_WebDevelopment/hckthon/sih26028/docs/Submission%20Details.md).
+- Verified `Idea Description` count: 3,843 characters (limit: 5,000).
+- Verified `Abstract Summary` count: 9,217 characters (limit: 10,000).
+
+### Verification
+- Character counts validated with python string length utilities.
+- All test suites passing.
+
+### Current State
+- Both submission fields are copy-paste ready and strictly comply with SIH portal character limitations.
+
 ## 2026-09-29 — SIH26028 & SIH26027 Submission Details & Agent Memory Invariant
 
 ### Objective

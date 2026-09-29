@@ -158,12 +158,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             <RailLogo size={32} variant="badge" glow={true} />
             <div>
               <div className="flex items-center space-x-1.5">
-                <h1 className="text-sm font-bold text-[#0F172A] tracking-tight group-hover:text-[#2B7FFF] transition-colors">RailSuraksha AI</h1>
+                <h1 className="text-sm font-bold text-[#0F172A] tracking-tight group-hover:text-[#2B7FFF] transition-colors">IRIS ai</h1>
                 <span
                   className="text-[9px] font-mono font-semibold bg-[#E6F0FA] text-[#426188] px-1 py-0.2 border border-[#D0DFEE]"
                   style={{ borderRadius: '4px' }}
                 >
-                  SIH-26027
+                  SIH-26028
                 </span>
               </div>
             </div>

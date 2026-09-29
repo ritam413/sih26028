@@ -96,7 +96,7 @@ export function MultiDeptSynergyMatrix() {
           Four Specialized Gangs. One Unified Shadow Block.
         </h2>
         <p className="text-sm text-[#9194a1] mt-2 max-w-2xl">
-          RailSuraksha AI dissolves departmental silos by synthesizing Track, Traction, Signalling, and Kavach telemetry into
+          IRIS ai dissolves departmental silos by synthesizing Track, Traction, Signalling, and Kavach telemetry into
           a single interlocked execution schedule.
         </p>
       </div>

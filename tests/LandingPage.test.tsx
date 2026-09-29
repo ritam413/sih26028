@@ -10,7 +10,7 @@ import { LandingFooter } from '../src/components/Landing/LandingFooter';
 describe('Landing Page Components', () => {
   it('renders LandingNavbar with brand title, status, and launch CTA', () => {
     const html = renderToStaticMarkup(<LandingNavbar />);
-    expect(html).toContain('RailSuraksha AI');
+    expect(html).toContain('IRIS ai');
     expect(html).toContain('SIH-26028');
     expect(html).toContain('Kavach SIL-4 Active');
     expect(html).toContain('Launch Command Cockpit');
@@ -20,7 +20,7 @@ describe('Landing Page Components', () => {
     const html = renderToStaticMarkup(<ShadowBlockComparison />);
     expect(html).toContain('Fragmented Traffic Disruption vs. AI Shadow Block');
     expect(html).toContain('Legacy Maintenance');
-    expect(html).toContain('RailSuraksha AI Shadow Block');
+    expect(html).toContain('IRIS ai Shadow Block');
     expect(html).toContain('UNIFIED SHADOW BLOCK');
     expect(html).toContain('135 MIN SYNCHRONIZED');
   });
@@ -37,7 +37,7 @@ describe('Landing Page Components', () => {
 
   it('renders LandingFooter with compliance note and navigation', () => {
     const html = renderToStaticMarkup(<LandingFooter />);
-    expect(html).toContain('RailSuraksha AI');
+    expect(html).toContain('IRIS ai');
     expect(html).toContain('Command Center');
     expect(html).toContain('RDSO / CENELEC EN 50128 SIL-4 Architecture');
   });

@@ -67,7 +67,7 @@ export default function LoginClient() {
             <RailLogo size={52} variant="badge" glow={true} />
           </div>
           <h1 className="text-2xl font-bold font-display text-[#0F172A] tracking-tight">
-            RailSuraksha AI • Officer Authentication Portal
+            IRIS ai • Officer Authentication Portal
           </h1>
           <p className="text-xs text-slate-600 max-w-lg mx-auto">
             Role-Based Access Control (RBAC) Gatekeeper for Statutory Railway Operations (RDSO Cyber Protocol / IRPWM 2020 Ch 5).
